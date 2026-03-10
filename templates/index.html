@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>收集</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="grain-overlay"></div>
+    
+    <div class="page-wrapper">
+        <header class="site-header">
+            <div class="header-content">
+                <h1 class="site-title">文案收集器</h1>
+                <div class="header-decoration"></div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="input-panel">
+                <div class="input-wrapper">
+                    <label for="topic" class="input-label">主题</label>
+                    <input 
+                        type="text" 
+                        id="topic" 
+                        class="topic-input"
+                        placeholder="输入一个主题..." 
+                        autocomplete="off"
+                    >
+                    
+                    <label for="customPrompt" class="input-label" style="margin-top: 20px;">
+                        自定义提示词 <span style="opacity: 0.5; font-size: 0.85em;">(可选)</span>
+                    </label>
+                    <textarea 
+                        id="customPrompt" 
+                        class="custom-prompt-input"
+                        placeholder="留空则自动生成提示词..."
+                        rows="4"
+                    ></textarea>
+                    
+                    <button id="generateBtn" class="generate-btn">
+                        <span class="btn-inner">生成文案</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="paste-panel">
+                <div class="paste-wrapper">
+                    <label for="pasteArea" class="input-label">
+                        粘贴展示 <span style="opacity: 0.5; font-size: 0.85em;">(从文案.md复制后粘贴)</span>
+                    </label>
+                    <textarea 
+                        id="pasteArea" 
+                        class="paste-input"
+                        placeholder="粘贴从文案.md复制的内容..."
+                        rows="6"
+                    ></textarea>
+                    <button id="parseBtn" class="parse-btn">
+                        <span class="btn-inner">解析并展示</span>
+                    </button>
+                </div>
+            </section>
+
+            <div id="statusSection" class="status-panel" style="display: none;">
+                <div class="status-inner">
+                    <div class="loading-dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                    <p id="statusText" class="status-text">正在处理中...</p>
+                </div>
+            </div>
+
+            <div id="errorSection" class="error-panel" style="display: none;">
+                <div class="error-inner">
+                    <p id="errorText" class="error-text"></p>
+                    <button id="retryBtn" class="retry-btn">重新尝试</button>
+                </div>
+            </div>
+
+            <section id="resultSection" class="results-section" style="display: none;">
+                <div class="results-header">
+                    <p class="save-indicator" id="saveStatus"></p>
+                </div>
+                <div id="quotesList" class="quotes-grid"></div>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <p>DeepSeek AI</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
